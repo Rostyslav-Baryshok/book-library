@@ -66,7 +66,7 @@ function createList() {
   const markup = books
     .map(
       (book) =>
-        `<li class="list"><p class="text">${book.title}</p><button class="edit-btn">Edit</button><button class="del-btn">Delete</button></li>`
+        `<li id="${book.id}" class="list"><p class="text">${book.title}</p><button class="edit-btn">Edit</button><button class="del-btn">Delete</button></li>`
     )
     .join("");
 
@@ -100,7 +100,8 @@ function createPreviewMarkup(obj) {
 }
 
 function editBook() {
-  console.log("edit");
+  const book = books.find((book) => event.target.parentNode.id === book.id);
+  console.log(book);
 }
 
 function deleteBook() {
