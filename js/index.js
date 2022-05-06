@@ -74,7 +74,14 @@ function createList() {
 
   const pEl = document.querySelectorAll(".text");
   pEl.forEach((el) => el.addEventListener("click", showPreview));
+
+  const editBtnEl = document.querySelectorAll(".edit-btn");
+  editBtnEl.forEach((el) => el.addEventListener("click", editBook));
+
+  const deleteBtnEl = document.querySelectorAll(".del-btn");
+  deleteBtnEl.forEach((el) => el.addEventListener("click", deleteBook));
 }
+
 createList();
 
 function showPreview(event) {
@@ -90,4 +97,12 @@ function renderPreview(book) {
 
 function createPreviewMarkup(obj) {
   return `<h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p>`;
+}
+
+function editBook() {
+  console.log("edit");
+}
+
+function deleteBook() {
+  console.log("delete");
 }
