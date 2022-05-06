@@ -62,3 +62,8 @@ divLeft.prepend(titleEl, ulEl, btnEl)
 titleEl.classList.add("title")
 ulEl.classList.add("ul")
 btnEl.classList.add("btn-add")
+
+const markup = books.map((book) => `<li class="list"><p class="text">${book.title}</p><button class="edit-btn">Edit</button><button class="del-btn">Delete</button></li>`).join("");
+console.log(markup);
+
+ulEl.insertAdjacentHTML("afterbegin", markup)

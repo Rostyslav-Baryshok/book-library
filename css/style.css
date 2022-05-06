@@ -4,24 +4,48 @@
 
 .left-container {
 width: 40%;
-height: 80px;
+padding: 10px;
 background-color: tomato;
 }
 
 .right-container {
 width: 60%;
-height: 80px;
 background-color:bisque;
 }
 
 .title {
-  color: #212121;
+  color: #252525;
 }
 .ul {
 list-style-type: none;
 }
 
 .btn-add {
-border-radius: 20px;
-background-color: cadetblue;
+border-radius: 10px;
+border: none;
+background-color: rgb(82, 199, 52);
+}
+
+.list {
+display: flex;
+}
+
+.text {
+
+}
+
+.edit-btn {
+margin-left: auto;
+margin-bottom: 5px;
+background-color: rgb(105, 249, 69);
+border: none;
+border-radius: 10px;
+}
+
+.del-btn {
+margin-left: 10px;
+margin-bottom: 5px;
+background-color: rgb(247, 56, 56);
+border: none;
+border-radius: 10px;
 }
