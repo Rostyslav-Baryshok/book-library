@@ -38,7 +38,6 @@ const books =[
     какими инструментами ему нужно пользоваться.`,
     },
 ]
-// console.log(books)
 
 const divEl = document.querySelector("#root")
 
@@ -67,4 +66,23 @@ function createList() {
   const markup = books.map((book) => `<li class="list"><p class="text">${book.title}</p><button class="edit-btn">Edit</button><button class="del-btn">Delete</button></li>`).join("");
 
   ulEl.insertAdjacentHTML("afterbegin", markup);
+}
+
+const pEl = document.querySelectorAll(".text")
+pEl.forEach(el => el.addEventListener("click", showPreview))
+
+createList();
+
+
+function showPreview(event) {
+const book = books.find((book) => event.target.textContent === book.title)
+console.log(book)
+  }
+
+function renderPreview() {
+
+}
+
+function createPreviewMarkup(obj) {
+  return `<h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p>`;
 }
