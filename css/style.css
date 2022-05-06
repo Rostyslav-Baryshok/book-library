@@ -3,49 +3,45 @@
 }
 
 .left-container {
-width: 40%;
-padding: 10px;
-background-color: tomato;
+  width: 40%;
+  padding: 10px;
+  background-color: tomato;
 }
 
 .right-container {
-width: 60%;
-background-color:bisque;
+  width: 60%;
+  background-color: bisque;
 }
 
 .title {
   color: #252525;
 }
 .ul {
-list-style-type: none;
+  list-style-type: none;
 }
 
 .btn-add {
-border-radius: 10px;
-border: none;
-background-color: rgb(82, 199, 52);
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(82, 199, 52);
 }
 
 .list {
-display: flex;
-}
-
-.text {
-
+  display: flex;
 }
 
 .edit-btn {
-margin-left: auto;
-margin-bottom: 5px;
-background-color: rgb(105, 249, 69);
-border: none;
-border-radius: 10px;
+  margin-left: auto;
+  margin-bottom: 5px;
+  background-color: rgb(105, 249, 69);
+  border: none;
+  border-radius: 10px;
 }
 
 .del-btn {
-margin-left: 10px;
-margin-bottom: 5px;
-background-color: rgb(247, 56, 56);
-border: none;
-border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  background-color: rgb(247, 56, 56);
+  border: none;
+  border-radius: 10px;
 }
