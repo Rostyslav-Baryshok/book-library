@@ -39,6 +39,9 @@ const books = [
   },
 ];
 
+const BOOKS = "books";
+localStorage.setItem(BOOKS, JSON.stringify(books));
+
 const divEl = document.querySelector("#root");
 
 const divLeft = document.createElement("div");
@@ -63,6 +66,7 @@ ulEl.classList.add("ul");
 btnEl.classList.add("btn-add");
 
 function createList() {
+  const books = JSON.parse(localStorage.getItem(BOOKS));
   const markup = books
     .map(
       (book) =>
@@ -85,9 +89,9 @@ function createList() {
 createList();
 
 function showPreview(event) {
+  const books = JSON.parse(localStorage.getItem(BOOKS));
   const book = books.find((book) => event.target.textContent === book.title);
   renderPreview(book);
-  // console.log(event.target.textContent);
 }
 
 function renderPreview(book) {
@@ -96,14 +100,26 @@ function renderPreview(book) {
 }
 
 function createPreviewMarkup(obj) {
-  return `<h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p>`;
+  return `<div class="preview" id="${obj.id}"><h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p></div>`;
 }
 
 function editBook() {
+  const books = JSON.parse(localStorage.getItem(BOOKS));
   const book = books.find((book) => event.target.parentNode.id === book.id);
   console.log(book);
 }
 
 function deleteBook() {
-  console.log("delete");
+  const books = JSON.parse(localStorage.getItem(BOOKS));
+  const book = books.filter((book) => event.target.parentNode.id !== book.id);
+  localStorage.setItem(BOOKS, JSON.stringify(book));
+  ulEl.innerHTML = "";
+  createList();
+  if (divRight.innerHTML !== "") {
+    const divRightEl = document.querySelector(".preview");
+
+    if (divRightEl.id === event.target.parentNode.id) {
+      divRight.innerHTML = "";
+    }
+  }
 }
