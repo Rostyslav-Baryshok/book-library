@@ -86,6 +86,9 @@ function createList() {
   deleteBtnEl.forEach((el) => el.addEventListener("click", deleteBook));
 }
 
+const addBookEl = document.querySelector(".btn-add");
+addBookEl.addEventListener("click", addBookFunc);
+
 createList();
 
 function showPreview(event) {
@@ -123,3 +126,25 @@ function deleteBook() {
     }
   }
 }
+function addBookFunc() {
+  createFormMurkup();
+  divRight.innerHTML = "";
+  divRight.insertAdjacentHTML("afterbegin", createFormMurkup());
+  const newBook = {
+    id: `${Date.now()}`,
+    author: "",
+    title: "",
+    image: "",
+    plot: "",
+  };
+}
+
+const createFormMurkup = () => {
+  return `<form class = 'add-book'>
+  <label>Author<input type = 'text'></label>
+  <label>Title<input type = 'text'></label>
+  <label>Image<input type = 'text'></label>
+  <label>Plot<textarea></textarea></label>
+  <button>Save</button>
+  </form>`;
+};
