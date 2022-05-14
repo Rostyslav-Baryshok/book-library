@@ -137,14 +137,34 @@ function addBookFunc() {
     image: "",
     plot: "",
   };
+
+  fillObject(newBook);
+  const saveBtnEl = document.querySelector(".save-btn");
+  saveBtnEl.addEventListener("click", saveBook);
+
+  function saveBook() {
+    const books = JSON.parse(localStorage.getItem(BOOKS));
+    books.push(newBook);
+    localStorage.setItem(BOOKS, JSON.stringify(books));
+  }
 }
 
 const createFormMurkup = () => {
-  return `<form class = 'add-book'>
-  <label>Author<input type = 'text'></label>
-  <label>Title<input type = 'text'></label>
-  <label>Image<input type = 'text'></label>
-  <label>Plot<textarea></textarea></label>
-  <button>Save</button>
+  return `<form class ='add-book'>
+  <label>Author<input name="author" type ='text'></label>
+  <label>Title<input name="title" type ='text'></label>
+  <label>Image<input name="image" type ='text'></label>
+  <label>Plot<textarea name="plot"></textarea></label>
+  <button class="save-btn" type="button">Save</button>
   </form>`;
 };
+
+function fillObject(book) {
+  const inputAll = document.querySelectorAll("input");
+  inputAll.forEach((el) => {
+    el.addEventListener("input", addValue);
+  });
+  function addValue(event) {
+    book[event.target.name] = event.target.value;
+  }
+}
