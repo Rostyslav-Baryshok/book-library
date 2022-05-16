@@ -45,3 +45,27 @@
   border: none;
   border-radius: 10px;
 }
+
+.add-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  /* margin: 0 auto; */
+}
+.input {
+  margin-bottom: 10px;
+}
+
+.save-btn {
+  border-radius: 10px;
+  border: none;
+  height: 22px;
+  margin-top: 130px;
+  background-color: rgb(82, 199, 52);
+}
