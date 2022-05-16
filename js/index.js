@@ -40,7 +40,9 @@ const books = [
 ];
 
 const BOOKS = "books";
-localStorage.setItem(BOOKS, JSON.stringify(books));
+if (!localStorage.getItem(BOOKS)) {
+  localStorage.setItem(BOOKS, JSON.stringify(books));
+}
 
 const divEl = document.querySelector("#root");
 
@@ -109,7 +111,8 @@ function createPreviewMarkup(obj) {
 function editBook() {
   const books = JSON.parse(localStorage.getItem(BOOKS));
   const book = books.find((book) => event.target.parentNode.id === book.id);
-  console.log(book);
+  divRight.innerHTML = "";
+  divRight.insertAdjacentHTML("afterbegin", createFormMurkup(book));
 }
 
 function deleteBook() {
@@ -127,9 +130,6 @@ function deleteBook() {
   }
 }
 function addBookFunc() {
-  createFormMurkup();
-  divRight.innerHTML = "";
-  divRight.insertAdjacentHTML("afterbegin", createFormMurkup());
   const newBook = {
     id: `${Date.now()}`,
     author: "",
@@ -137,6 +137,8 @@ function addBookFunc() {
     image: "",
     plot: "",
   };
+  divRight.innerHTML = "";
+  divRight.insertAdjacentHTML("afterbegin", createFormMurkup(newBook));
 
   fillObject(newBook);
   const saveBtnEl = document.querySelector(".save-btn");
@@ -146,15 +148,18 @@ function addBookFunc() {
     const books = JSON.parse(localStorage.getItem(BOOKS));
     books.push(newBook);
     localStorage.setItem(BOOKS, JSON.stringify(books));
+    ulEl.innerHTML = "";
+    createList();
+    renderPreview(newBook);
   }
 }
 
-const createFormMurkup = () => {
+const createFormMurkup = (book) => {
   return `<form class ='add-book'>
-  <label>Author<input name="author" type ='text'></label>
-  <label>Title<input name="title" type ='text'></label>
-  <label>Image<input name="image" type ='text'></label>
-  <label>Plot<textarea name="plot"></textarea></label>
+  <label class="label">Author<input class="input" name="author" value="${book.author}" type ='text'></label>
+  <label class="label">Title<input class="input" name="title" value="${book.title}" type ='text'></label>
+  <label class="label">Image<input class="input" name="image" value="${book.image}" type ='text'></label>
+  <label class="label">Plot<input class="input" name="plot" value="${book.plot}"></input></label>
   <button class="save-btn" type="button">Save</button>
   </form>`;
 };
