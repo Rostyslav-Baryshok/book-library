@@ -68,6 +68,7 @@ ulEl.classList.add("ul");
 btnEl.classList.add("btn-add");
 
 function createList() {
+  // ulEl.innerHTML = "";
   const books = JSON.parse(localStorage.getItem(BOOKS));
   const markup = books
     .map(
@@ -107,12 +108,28 @@ function renderPreview(book) {
 function createPreviewMarkup(obj) {
   return `<div class="preview" id="${obj.id}"><h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p></div>`;
 }
-
+// event
 function editBook() {
   const books = JSON.parse(localStorage.getItem(BOOKS));
   const book = books.find((book) => event.target.parentNode.id === book.id);
   divRight.innerHTML = "";
   divRight.insertAdjacentHTML("afterbegin", createFormMurkup(book));
+  fillObject(book);
+  const saveBtn = document.querySelector(".save-btn");
+  saveBtn.addEventListener("click", onBtnSave);
+
+  function onBtnSave() {
+    for (let i = 0; i < books.length; i += 1) {
+      if (books[i] === books.indexOf(book)) {
+        books.splice(books[i], 1, book);
+      }
+    }
+    localStorage.setItem(BOOKS, JSON.stringify(books));
+    ulEl.innerHTML = "";
+    createList();
+    renderPreview(book);
+    setTimeout(() => alert("Book edit"), 500);
+  }
 }
 
 function deleteBook() {
@@ -151,6 +168,7 @@ function addBookFunc() {
     ulEl.innerHTML = "";
     createList();
     renderPreview(newBook);
+    setTimeout(() => alert("Book add"), 500);
   }
 }
 
