@@ -59,7 +59,7 @@ titleEl.textContent = "Library";
 
 const ulEl = document.createElement("ul");
 const btnEl = document.createElement("button");
-btnEl.textContent = "ADD";
+btnEl.textContent = "Add";
 
 divLeft.prepend(titleEl, ulEl, btnEl);
 
@@ -106,7 +106,7 @@ function renderPreview(book) {
 }
 
 function createPreviewMarkup(obj) {
-  return `<div class="preview" id="${obj.id}"><h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p>${obj.plot}</p></div>`;
+  return `<div class="preview" id="${obj.id}"><h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p class="text-description">${obj.plot}</p></div>`;
 }
 // event
 function editBook() {
