@@ -40,7 +40,7 @@ const books = [
 ];
 
 const BOOKS = "books";
-if (localStorage.getItem(BOOKS)) {
+if (!localStorage.getItem(BOOKS)) {
   localStorage.setItem(BOOKS, JSON.stringify(books));
 }
 
