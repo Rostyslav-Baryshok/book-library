@@ -65,10 +65,9 @@ divLeft.prepend(titleEl, ulEl, btnEl);
 
 titleEl.classList.add("title");
 ulEl.classList.add("ul");
-btnEl.classList.add("btn-add");
+btnEl.classList.add("add-btn");
 
 function createList() {
-  // ulEl.innerHTML = "";
   const books = JSON.parse(localStorage.getItem(BOOKS));
   const markup = books
     .map(
@@ -89,7 +88,7 @@ function createList() {
   deleteBtnEl.forEach((el) => el.addEventListener("click", deleteBook));
 }
 
-const addBookEl = document.querySelector(".btn-add");
+const addBookEl = document.querySelector(".add-btn");
 addBookEl.addEventListener("click", addBookFunc);
 
 createList();
@@ -108,7 +107,7 @@ function renderPreview(book) {
 function createPreviewMarkup(obj) {
   return `<div class="preview" id="${obj.id}"><h2>${obj.title}</h2><p>${obj.author}</p><img src="${obj.img}"><p class="text-description">${obj.plot}</p></div>`;
 }
-// event
+
 function editBook() {
   const books = JSON.parse(localStorage.getItem(BOOKS));
   const book = books.find((book) => event.target.parentNode.id === book.id);
@@ -178,8 +177,8 @@ const createFormMurkup = (book) => {
   <label class="label">Title<input class="input" name="title" value="${book.title}" type ='text'></label>
   <label class="label">Image<input class="input" name="image" value="${book.image}" type ='text'></label>
   <label class="label">Plot<input class="input" name="plot" value="${book.plot}"></input></label>
-  <button class="save-btn" type="button">Save</button>
-  </form>`;
+  </form>
+  <button class="save-btn" type="button">Save</button>`;
 };
 
 function fillObject(book) {

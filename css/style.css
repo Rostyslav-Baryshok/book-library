@@ -1,8 +1,13 @@
 #root {
   display: flex;
-  min-height: 450px;
+  min-height: 400px;
 }
 
+h1,
+h2,
+h3 {
+  margin: 0;
+}
 img {
   width: 200px;
   height: 250px;
@@ -14,17 +19,20 @@ img {
 .left-container {
   width: 40%;
   margin-right: 10px;
-  background-color: #cecece;
+  background-color: #ffdcb5;
 }
 
 .right-container {
   width: 60%;
-  background-color: #ffdaaf;
+  background-color: #ffdcb5;
 }
 .right-container,
 .left-container {
   border-radius: 15px;
-  padding: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
@@ -35,10 +43,15 @@ img {
 }
 .list {
   display: flex;
+  align-items: center;
 }
 
 .text {
   font-size: 18px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  cursor: default;
+  background-color: rgb(105, 249, 69);
 }
 
 .text-description {
@@ -47,22 +60,26 @@ img {
   font-size: 16px;
 }
 
-.btn-add {
+.add-btn {
   border-radius: 10px;
   background-color: greenyellow;
+  cursor: pointer;
 }
 .save-btn {
   margin-top: 130px;
   background-color: greenyellow;
+  cursor: pointer;
 }
 
-.btn-add,
+.add-btn,
 .save-btn {
-  width: 50px;
+  width: 80px;
   height: 30px;
   box-shadow: 2px 2px 3px 1px;
   border: none;
   border-radius: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
 .edit-btn {
@@ -74,6 +91,7 @@ img {
   width: 50px;
   height: 40px;
   box-shadow: 2px 2px 3px 1px;
+  cursor: pointer;
 }
 
 .del-btn {
@@ -85,6 +103,15 @@ img {
   width: 60px;
   height: 40px;
   box-shadow: 2px 2px 3px 1px;
+  cursor: pointer;
+}
+
+.add-btn:hover,
+.save-btn:hover,
+.edit-btn:hover,
+.del-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 1px 0px 1px 1px;
 }
 
 .add-book {
@@ -95,9 +122,13 @@ img {
 
 .label {
   display: flex;
-  justify-content: space-between;
   width: 300px;
+  flex-direction: column;
+  align-items: stretch;
 }
 .input {
-  margin-bottom: 10px;
+  margin-bottom: 13px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
 }
